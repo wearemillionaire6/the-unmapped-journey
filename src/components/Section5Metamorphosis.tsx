@@ -25,6 +25,8 @@ export default function Section5Metamorphosis() {
       id="metamorphosis"
       className="relative min-h-screen w-full bg-[#0a0706] flex flex-col justify-between overflow-hidden"
     >
+      <div className="editorial-grid-line left-[20%]" />
+      <div className="editorial-grid-line right-[20%]" />
       {/* ================= TOP COLLAGE CANVAS (Swallows Viewport) ================= */}
       <div className="relative w-full h-[65vh] md:h-[70vh] bg-gradient-to-b from-[#1c0c08] to-[#0a0706] overflow-hidden">
         
@@ -40,7 +42,7 @@ export default function Section5Metamorphosis() {
 
         {/* Layer 2: Huayna Picchu mountain peaks & Stone Terraces (Machu Picchu) */}
         <div className="absolute bottom-[20%] right-[-5%] w-[65%] h-[40%] pointer-events-none z-5 opacity-70 filter drop-shadow-[0_-4px_8px_rgba(0,0,0,0.35)]">
-          <svg viewBox="0 0 500 300" className="w-full h-full fill-[#1c1815]">
+          <svg viewBox="0 0 500 300" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#1c1815]">
             {/* Mountain Peak */}
             <path d="M 100 300 L 250 80 Q 280 60 300 80 L 450 300 Z" />
             {/* Incas terraces */}
@@ -55,7 +57,7 @@ export default function Section5Metamorphosis() {
           transition={{ repeat: Infinity, duration: 25, ease: "easeInOut" }}
           className="absolute bottom-[10%] inset-x-[-100px] h-[35%] z-10 pointer-events-none opacity-45 filter drop-shadow-[0_-6px_12px_rgba(0,0,0,0.25)]"
         >
-          <svg viewBox="0 0 1400 200" className="w-full h-full fill-[#cbbcad]">
+          <svg viewBox="0 0 1400 200" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#cbbcad]">
             <path d="M 0 200 C 150 140, 250 80, 450 120 C 650 160, 750 90, 950 130 C 1150 170, 1250 110, 1400 150 L 1400 200 Z" />
           </svg>
         </motion.div>
@@ -66,7 +68,7 @@ export default function Section5Metamorphosis() {
           transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
           className="absolute bottom-[5%] inset-x-[-100px] h-[30%] z-20 pointer-events-none opacity-65 filter drop-shadow-[0_-8px_16px_rgba(0,0,0,0.35)]"
         >
-          <svg viewBox="0 0 1400 200" className="w-full h-full fill-[#a8988a]">
+          <svg viewBox="0 0 1400 200" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#a8988a]">
             <path d="M 0 200 C 200 120, 350 160, 500 110 C 650 60, 800 140, 1000 90 C 1200 40, 1300 120, 1400 130 L 1400 200 Z" />
           </svg>
         </motion.div>
@@ -77,14 +79,14 @@ export default function Section5Metamorphosis() {
           transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
           className="absolute bottom-[-10px] inset-x-[-100px] h-[25%] z-30 pointer-events-none filter drop-shadow-[0_-12px_24px_rgba(0,0,0,0.45)]"
         >
-          <svg viewBox="0 0 1400 200" className="w-full h-full fill-[#817266]">
+          <svg viewBox="0 0 1400 200" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#817266]">
             <path d="M 0 200 C 100 150, 300 90, 450 130 C 600 170, 800 100, 950 140 C 1100 180, 1250 110, 1400 160 L 1400 200 Z" />
           </svg>
         </motion.div>
 
         {/* Layer 6: Towering Cliff Edge (Foreground Left) */}
         <div className="absolute inset-y-0 left-0 w-[35%] pointer-events-none z-30 filter drop-shadow-[12px_0_24px_rgba(0,0,0,0.6)]">
-          <svg viewBox="0 0 200 450" className="w-full h-full fill-[#0f0b09]">
+          <svg viewBox="0 0 200 450" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#0f0b09]">
             {/* Massive towering cliff */}
             <path d="M 0 0 C 30 50, 50 120, 45 180 C 40 230, 85 290, 75 350 C 65 410, 110 440, 90 450 L 0 450 Z" />
             <path d="M 0 0 C 15 30, 30 90, 25 140 C 20 180, 55 240, 45 300 C 35 360, 60 410, 50 450 L 0 450 Z" fill="#201714" opacity="0.5" />
@@ -109,7 +111,7 @@ export default function Section5Metamorphosis() {
             className="w-full h-full relative"
           >
             {/* SVG Traveler silhouette */}
-            <svg viewBox="0 0 100 160" className="w-full h-full">
+            <svg viewBox="0 0 100 160" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
               <path 
                 d="M 22 130 C 22 105, 32 95, 37 95 C 42 95, 47 90, 47 80 C 47 70, 50 65, 48 55 C 45 45, 52 42, 57 42 C 62 42, 65 45, 62 55 C 59 65, 62 70, 62 80 C 62 90, 52 105, 52 130 Z" 
                 fill="#050302" 

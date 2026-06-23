@@ -133,13 +133,14 @@ export default function Section3Immersion() {
       cancelAnimationFrame(animationId);
     };
   }, [animalState]);
-
   return (
     <section 
       id="immersion"
       ref={sectionRef}
       className="relative min-h-screen bg-m-charcoal py-24 px-6 md:px-12 lg:px-20 border-b border-white/5 overflow-hidden"
     >
+      <div className="editorial-grid-line left-[20%]" />
+      <div className="editorial-grid-line right-[20%]" />
       <div className="max-w-7xl mx-auto z-10 relative">
         
         {/* Section Header */}
@@ -175,7 +176,7 @@ export default function Section3Immersion() {
                 style={{ scale: bgScale }}
                 className="absolute inset-0 flex items-end justify-center pointer-events-none z-0"
               >
-                <svg viewBox="0 0 600 450" className="w-full h-full fill-[#dfcaa0] filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
+                <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#dfcaa0] filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
                   {/* Savanna Sky Sun */}
                   <circle cx="480" cy="180" r="45" fill="#faedd4" opacity="0.45" />
                   {/* Mount Kilimanjaro silhouette */}
@@ -189,7 +190,7 @@ export default function Section3Immersion() {
                 style={{ scale: midScale }}
                 className="absolute inset-0 flex items-end justify-center pointer-events-none z-10"
               >
-                <svg viewBox="0 0 600 450" className="w-full h-full fill-[#cbb997]">
+                <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#cbb997]">
                   {/* Savanna ridges */}
                   <path d="M 0 450 Q 200 360 400 400 T 600 370 L 600 450 Z" />
                   
@@ -206,7 +207,7 @@ export default function Section3Immersion() {
 
               {/* Layer 3: Sapphire Winding Savanna River (Vector cut) */}
               <div className="absolute inset-0 flex items-end justify-center pointer-events-none z-25">
-                <svg viewBox="0 0 600 450" className="w-full h-full fill-none">
+                <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-none">
                   {/* River Path */}
                   <path 
                     d="M 350 450 C 310 400, 260 360, 280 300 C 300 240, 220 210, 215 195 C 210 180, 225 160, 220 140" 
@@ -293,7 +294,7 @@ export default function Section3Immersion() {
                 style={{ x: fgLeftX, scale: fgLeftScale }}
                 className="absolute inset-y-0 left-[-20px] w-1/3 flex items-end pointer-events-none z-30 filter drop-shadow-[6px_0_12px_rgba(0,0,0,0.35)] origin-bottom-left"
               >
-                <svg viewBox="0 0 200 450" className="w-full h-[110%] fill-[#3d4434]">
+                <svg viewBox="0 0 200 450" preserveAspectRatio="xMidYMid slice" className="w-full h-[110%] fill-[#3d4434]">
                   {/* Left Acacia frame */}
                   <polygon points="0,0 80,450 0,450" />
                   <path d="M 0 100 Q 120 180 0 240 Z" fill="#2d3326" />
@@ -306,7 +307,7 @@ export default function Section3Immersion() {
                 style={{ x: fgRightX, scale: fgRightScale }}
                 className="absolute inset-y-0 right-[-20px] w-1/3 flex items-end pointer-events-none z-30 filter drop-shadow-[-6px_0_12px_rgba(0,0,0,0.35)] origin-bottom-right"
               >
-                <svg viewBox="0 0 200 450" className="w-full h-[110%] fill-[#3d4434]">
+                <svg viewBox="0 0 200 450" preserveAspectRatio="xMidYMid slice" className="w-full h-[110%] fill-[#3d4434]">
                   {/* Right Acacia frame */}
                   <polygon points="200,0 120,450 200,450" />
                   <path d="M 200 130 Q 100 200 200 270 Z" fill="#2d3326" />

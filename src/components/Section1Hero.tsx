@@ -51,7 +51,9 @@ export default function Section1Hero() {
       className="relative min-h-screen w-full bg-m-charcoal flex flex-col justify-center items-center py-20 px-6 md:px-12 lg:px-20 border-b border-white/5 overflow-hidden animate-fade-in"
     >
       {/* Decorative Grid Lines to give a draft / craftsmanship vibe */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      <div className="editorial-grid-line left-[20%]" />
+      <div className="editorial-grid-line right-[20%]" />
 
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center z-10">
         
@@ -137,7 +139,7 @@ export default function Section1Hero() {
                 className="absolute w-[85%] h-[85%] flex items-center justify-center pointer-events-none z-10"
               >
                 {/* SVG Watch Face and Gears */}
-                <svg viewBox="0 0 400 400" className="w-full h-full filter drop-shadow-[0_12px_18px_rgba(0,0,0,0.6)]">
+                <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" className="w-full h-full filter drop-shadow-[0_12px_18px_rgba(0,0,0,0.6)]">
                   {/* Outer Watch Brass Rim */}
                   <circle cx="200" cy="200" r="150" fill="#201c18" stroke="#ffb800" strokeWidth="3" opacity="0.6" />
                   
@@ -200,7 +202,7 @@ export default function Section1Hero() {
                 style={{ x: fgTranslateX, y: fgTranslateY }}
                 className="absolute inset-0 flex items-end justify-center pointer-events-none z-20"
               >
-                <svg viewBox="0 0 800 450" className="w-full h-full filter drop-shadow-[0_-6px_12px_rgba(0,0,0,0.5)]">
+                <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" className="w-full h-full filter drop-shadow-[0_-6px_12px_rgba(0,0,0,0.5)]">
                   {/* Stone steps path leading into gate */}
                   <path d="M 320 450 L 340 340 L 460 340 L 480 450 Z" fill="#1b1816" stroke="#2a2522" strokeWidth="2" />
                   <line x1="330" y1="400" x2="470" y2="400" stroke="#2a2522" strokeWidth="2" />

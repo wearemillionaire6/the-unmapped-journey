@@ -35,18 +35,9 @@ export default function Section2Departure() {
   const xTranslation = useTransform(smoothProgress, [0, 1], ["0%", "-66.66%"]);
 
   // Map scroll progress to the train's horizontal movement across the second panel
-  const trainProgress = useTransform(smoothProgress, [0.2, 0.8], [-150, 1200]);
+  const trainX = useTransform(smoothProgress, [0.2, 0.85], ["-20%", "110%"]);
 
-  // Track the actual train coordinate for canvas particle generation
-  const [trainPos, setTrainPos] = useState({ x: -150, y: 310 });
   const [isIntersecting, setIsIntersecting] = useState(false);
-
-  // Update train position state for the particle loop
-  useEffect(() => {
-    return trainProgress.onChange((val) => {
-      setTrainPos({ x: val, y: 310 });
-    });
-  }, [trainProgress]);
 
   // Monitor visibility of the canvas to pause loops when out of viewport (Performance Constraint)
   useEffect(() => {
@@ -104,9 +95,15 @@ export default function Section2Departure() {
     const updateAndDraw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Calculate responsive train pixel coordinates
+      const scrollVal = smoothProgress.get();
+      const norm = Math.max(0, Math.min(1, (scrollVal - 0.2) / 0.65));
+      const currentTrainX = (canvas.width / 3 - 150) + norm * (canvas.width / 3 + 300);
+      const currentTrainY = canvas.height * (1 - 0.135) - 30; // 13.5% bottom track level
+
       // Spawn a new particle every 3 frames to control density
-      if (Math.random() < 0.35 && trainPos.x > -100 && trainPos.x < canvas.width + 100) {
-        spawnParticle(trainPos.x, trainPos.y);
+      if (Math.random() < 0.35 && currentTrainX > -100 && currentTrainX < canvas.width + 100) {
+        spawnParticle(currentTrainX, currentTrainY);
       }
 
       particles = particles.filter((p) => {
@@ -153,14 +150,16 @@ export default function Section2Departure() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
     };
-  }, [trainPos, isIntersecting]);
+  }, [smoothProgress, isIntersecting]);
 
   return (
     <div 
       id="departure" 
       ref={containerRef} 
-      className="relative h-[300vh] bg-m-charcoal"
+      className="relative h-[220vh] bg-m-charcoal"
     >
+      <div className="editorial-grid-line left-[20%]" />
+      <div className="editorial-grid-line right-[20%]" />
       {/* Sticky viewport container */}
       <div className="sticky top-0 h-screen w-screen overflow-hidden">
         
@@ -228,21 +227,21 @@ export default function Section2Departure() {
             </div>
 
             {/* Background Layer: Geometric Mountains made of cardstock */}
-            <svg viewBox="0 0 1200 400" className="absolute bottom-[20%] left-0 w-full h-[45%] pointer-events-none z-10 fill-[#dbcdc0] opacity-80 filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)]">
+            <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" className="absolute bottom-[20%] left-0 w-full h-[45%] pointer-events-none z-10 fill-[#dbcdc0] opacity-80 filter drop-shadow-[0_4px_6px_rgba(0,0,0,0.15)]">
               {/* Mountain Peaks */}
               <path d="M 0 400 L 150 180 L 300 290 L 500 120 L 720 280 L 950 100 L 1200 360 L 1200 400 Z" />
               <path d="M 200 400 L 350 200 L 600 320 L 850 150 L 1100 300 L 1200 240 L 1200 400 Z" fill="#cbbcad" opacity="0.6" />
             </svg>
 
             {/* Layer 3: Dark Teal Paper Waves */}
-            <svg viewBox="0 0 1200 200" className="absolute bottom-[10%] left-0 w-full h-[25%] pointer-events-none z-20 fill-a-teal filter drop-shadow-[0_-6px_12px_rgba(0,0,0,0.2)]">
+            <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMid slice" className="absolute bottom-[10%] left-0 w-full h-[25%] pointer-events-none z-20 fill-a-teal filter drop-shadow-[0_-6px_12px_rgba(0,0,0,0.2)]">
               {/* Swirling cresting paper waves */}
               <path d="M 0 200 C 150 160, 200 100, 350 120 C 500 140, 600 80, 750 110 C 900 140, 1050 90, 1200 140 L 1200 200 Z" />
             </svg>
 
             {/* Layer 4: Crimson Ridge and Railway Track */}
             <div className="absolute bottom-0 left-0 w-full h-[20%] z-30 filter drop-shadow-[0_-8px_16px_rgba(0,0,0,0.3)]">
-              <svg viewBox="0 0 1200 150" className="w-full h-full fill-a-crimson">
+              <svg viewBox="0 0 1200 150" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-a-crimson">
                 {/* Crimson sweeping ridge */}
                 <path d="M 0 150 C 180 110, 300 60, 480 80 C 660 100, 850 40, 1050 70 C 1120 80, 1160 90, 1200 90 L 1200 150 Z" />
                 
@@ -271,7 +270,7 @@ export default function Section2Departure() {
 
             {/* Layer 5: The Miniature Vintage Steam Train */}
             <motion.div 
-              style={{ x: trainPos.x, y: trainPos.y }}
+              style={{ x: trainX, bottom: "13.5%" }}
               className="absolute w-[180px] h-[60px] z-40 pointer-events-none filter drop-shadow-[0_8px_12px_rgba(0,0,0,0.4)]"
             >
               {/* Detailed SVG Steam Train */}
@@ -316,7 +315,7 @@ export default function Section2Departure() {
             {/* Bottom canvas metadata indicators */}
             <div className="absolute bottom-2 right-6 left-6 flex justify-between items-center text-[10px] tracking-widest font-mono text-a-teal select-none z-50 font-semibold">
               <span>LOC // SWISS_ALPINE_PASS</span>
-              <span>SCROLL PROGRESS // {Math.round(trainPos.x ? ((trainPos.x + 150) / 1350) * 100 : 0)}%</span>
+              <span>SCROLL PROGRESS // {Math.round(smoothProgress.get() * 100)}%</span>
               <span>TRAIN // GLACIER_EXPRESS</span>
             </div>
           </div>

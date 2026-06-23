@@ -122,6 +122,8 @@ export default function Section4Sanctuary() {
       ref={containerRef}
       className="relative min-h-screen bg-m-charcoal border-b border-white/5 overflow-hidden"
     >
+      <div className="editorial-grid-line left-[20%]" />
+      <div className="editorial-grid-line right-[20%]" />
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 max-w-7xl mx-auto py-24 px-6 md:px-12 lg:px-20 gap-16">
         
         {/* Left Side: Sticky Editorial Typography */}
@@ -191,7 +193,7 @@ export default function Section4Sanctuary() {
                   transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                   className="w-16 h-16 pointer-events-none filter drop-shadow-[0_0_12px_rgba(255,235,180,0.35)]"
                 >
-                  <svg viewBox="0 0 100 100" className="w-full h-full fill-[#faedd4]">
+                  <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#faedd4]">
                     <path d="M 50 10 C 68 10, 80 20, 80 40 C 72 40, 60 30, 48 34 C 36 38, 30 50, 32 66 C 18 64, 10 50, 10 40 C 10 20, 28 10, 50 10 Z" />
                   </svg>
                 </motion.div>
@@ -199,7 +201,7 @@ export default function Section4Sanctuary() {
 
               {/* Layer 2: Whitewashed papercut cliffside (Santorini architecture) */}
               <div className="absolute inset-y-0 left-0 w-[45%] pointer-events-none z-10 filter drop-shadow-[8px_0_16px_rgba(0,0,0,0.45)]">
-                <svg viewBox="0 0 200 400" className="w-full h-full fill-[#eeeeee]">
+                <svg viewBox="0 0 200 400" preserveAspectRatio="xMidYMid slice" className="w-full h-full fill-[#eeeeee]">
                   {/* Santorini white cliffs */}
                   <path d="M 0 0 C 40 40, 70 80, 65 140 C 60 180, 100 220, 85 280 C 70 330, 120 370, 100 400 L 0 400 Z" />
                   {/* Layered grey shadows */}
@@ -258,7 +260,7 @@ export default function Section4Sanctuary() {
               {/* Layer 5: Tiny campfire outline and logs */}
               {/* Position matches fire source coordinates: x: 260, y: 310 */}
               <div className="absolute top-[68%] left-[45%] w-16 h-16 pointer-events-none z-30 flex flex-col items-center justify-end">
-                <svg viewBox="0 0 60 60" className="w-full h-full">
+                <svg viewBox="0 0 60 60" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
                   {/* Campfire logs */}
                   <line x1="15" y1="52" x2="45" y2="44" stroke="#4d3220" strokeWidth="4.5" strokeLinecap="round" />
                   <line x1="45" y1="52" x2="15" y2="44" stroke="#352215" strokeWidth="4.5" strokeLinecap="round" />
@@ -272,7 +274,7 @@ export default function Section4Sanctuary() {
               {/* Layer 6: Tiny paper-cut figure sitting by the fire */}
               {/* Sitting left of campfire: x: 230, y: 310 */}
               <div className="absolute top-[68%] left-[34%] w-10 h-16 pointer-events-none z-30">
-                <svg viewBox="0 0 40 60" className="w-full h-full">
+                <svg viewBox="0 0 40 60" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
                   {/* Silhouette of traveler sitting */}
                   <path 
                     d="M 28 50 C 28 42, 22 38, 20 38 C 18 38, 14 34, 14 30 C 14 26, 18 24, 22 24 C 26 24, 28 22, 28 18 C 28 14, 24 12, 20 12 C 16 12, 12 14, 12 18 C 12 22, 10 24, 8 28 C 6 32, 8 42, 10 50 Z" 
