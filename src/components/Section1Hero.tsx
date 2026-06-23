@@ -59,7 +59,7 @@ export default function Section1Hero() {
         
         {/* Left Side: Agency Info & Editorial Title */}
         <div className="lg:col-span-5 flex flex-col justify-center">
-          <div className="flex items-center gap-2 mb-6 text-a-amber uppercase tracking-[0.25em] text-xs font-semibold">
+          <div className="flex items-center gap-2 mb-6 text-a-volt uppercase tracking-[0.25em] text-xs font-semibold">
             <Compass className="w-4 h-4 animate-spin-slow" />
             <span>Showcase Chapter 01 / Kyoto, Japan</span>
           </div>
@@ -86,7 +86,7 @@ export default function Section1Hero() {
           >
             <a 
               href="#departure"
-              className="group relative inline-flex items-center justify-center px-6 py-3.5 bg-a-amber text-m-charcoal font-medium text-sm tracking-wider uppercase overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,184,0,0.4)]"
+              className="group relative inline-flex items-center justify-center px-6 py-3.5 bg-a-volt text-m-charcoal font-semibold text-sm tracking-wider uppercase overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,252,52,0.4)]"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Explore Destination 
@@ -112,6 +112,14 @@ export default function Section1Hero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative w-full aspect-[16/9] border border-white/10 p-4 bg-m-charcoal/80 shadow-paper-depth-3 backdrop-blur-sm rounded-lg overflow-hidden group"
           >
+            {/* High-tech corners (Lando Norris style) */}
+            <span className="absolute top-2 left-2 text-[8px] font-mono text-white/20 select-none">+[LN_SYS_01]</span>
+            <span className="absolute top-2 right-2 text-[8px] font-mono text-white/20 select-none">[35.6762N 139.6503E]</span>
+            <span className="absolute bottom-6 left-6 w-2 h-2 border-t border-l border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute bottom-6 right-6 w-2 h-2 border-t border-r border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute top-6 left-6 w-2 h-2 border-b border-l border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute top-6 right-6 w-2 h-2 border-b border-r border-a-volt/40 pointer-events-none z-30" />
+            
             {/* Inner Frame */}
             <div className="relative w-full h-full bg-[#1b1916] rounded overflow-hidden flex items-center justify-center">
               
@@ -141,7 +149,7 @@ export default function Section1Hero() {
                 {/* SVG Watch Face and Gears */}
                 <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" className="w-full h-full filter drop-shadow-[0_12px_18px_rgba(0,0,0,0.6)]">
                   {/* Outer Watch Brass Rim */}
-                  <circle cx="200" cy="200" r="150" fill="#201c18" stroke="#ffb800" strokeWidth="3" opacity="0.6" />
+                  <circle cx="200" cy="200" r="150" fill="#201c18" stroke="#d4fc34" strokeWidth="3" opacity="0.6" />
                   
                   {/* Ticking Rotating Gears (4rpm = 15s per rotation, counter-clockwise) */}
                   <motion.g
@@ -165,7 +173,7 @@ export default function Section1Hero() {
                   {/* Crack along watch face, leaking a sliver of golden hour light */}
                   <motion.path
                     d="M 200 200 L 170 230 L 150 280 L 130 330"
-                    stroke="#ffb800"
+                    stroke="#d4fc34"
                     strokeWidth="3"
                     fill="none"
                     initial={{ pathLength: 0, opacity: 0 }}
@@ -193,7 +201,7 @@ export default function Section1Hero() {
                   whileInView={{ opacity: [0, 0.7, 0.4, 0.7] }}
                   viewport={{ once: true }}
                   transition={{ delay: 1.2, duration: 3, repeat: Infinity, repeatType: "mirror" }}
-                  className="absolute w-32 h-64 bg-gradient-to-r from-a-amber/20 to-transparent blur-xl origin-left rotate-[40deg] translate-x-[-10px] translate-y-[20px] pointer-events-none mix-blend-color-dodge"
+                  className="absolute w-32 h-64 bg-gradient-to-r from-a-volt/25 to-transparent blur-xl origin-left rotate-[40deg] translate-x-[-10px] translate-y-[20px] pointer-events-none mix-blend-color-dodge"
                 />
               </motion.div>
 
@@ -273,7 +281,7 @@ export default function Section1Hero() {
             <div className="absolute bottom-2 right-6 left-6 flex justify-between items-center text-[10px] tracking-widest font-mono text-m-sepia select-none">
               <span>SYS.LOC // KYOTO_JAPAN</span>
               <div className="flex items-center gap-1.5">
-                <Watch className="w-3 h-3 text-a-amber animate-pulse" />
+                <Watch className="w-3 h-3 text-a-volt animate-pulse" />
                 <span>4.0 RPM</span>
               </div>
               <span>ASSET_REF: KYOTO_TORII</span>

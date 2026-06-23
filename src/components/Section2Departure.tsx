@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Train, Sun, ArrowRight } from "lucide-react";
 import StaggeredText from "./StaggeredText";
+import Marquee from "./Marquee";
 
 interface SmokeParticle {
   x: number;
@@ -23,9 +24,10 @@ export default function Section2Departure() {
   const horizontalRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Monitor vertical scroll progress of the 300vh container
+  // Monitor vertical scroll progress of the 220vh container
   const { scrollYProgress } = useScroll({
     target: containerRef,
+    offset: ["start start", "end end"],
   });
 
   // Smooth scroll progress to eliminate jerky motion
@@ -171,18 +173,18 @@ export default function Section2Departure() {
         >
           
           {/* ================= PANEL 1: Transition Intro ================= */}
-          <div className="w-[100vw] h-full flex items-center justify-center px-12 md:px-24 bg-gradient-to-r from-m-charcoal to-[#181212] relative">
+          <div className="w-[100vw] h-full flex items-center justify-center px-12 md:px-24 bg-gradient-to-r from-m-charcoal via-m-charcoal to-[#faedd4] relative">
             <div className="max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
               
               <div className="md:col-span-7">
-                <div className="flex items-center gap-2 mb-6 text-a-crimson uppercase tracking-[0.25em] text-xs font-semibold">
+                <div className="flex items-center gap-2 mb-6 text-a-volt uppercase tracking-[0.25em] text-xs font-semibold">
                   <Train className="w-4 h-4" />
                   <span>Showcase Chapter 02 / Swiss Alps, Switzerland</span>
                 </div>
                 
                 <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-m-cream mb-6 leading-tight">
                   Climb the Majestic <br />
-                  <span className="italic text-a-crimson font-normal">Alpine Ridges</span>
+                  <span className="italic text-a-volt font-normal">Alpine Ridges</span>
                 </h2>
                 
                 <StaggeredText
@@ -193,11 +195,13 @@ export default function Section2Departure() {
                 />
               </div>
               
-              <div className="md:col-span-5 border-l border-white/10 pl-8 flex flex-col justify-center">
-                <div className="text-[10px] tracking-widest font-mono text-a-crimson uppercase mb-2">SCROLL DIRECTION</div>
-                <div className="flex items-center gap-3 text-m-cream text-lg font-light group cursor-pointer">
-                  <span>Scroll Vertically to Travel</span>
-                  <ArrowRight className="w-5 h-5 text-a-crimson animate-pulse" />
+              <div className="md:col-span-5 border-l border-white/10 pl-8 flex flex-col justify-center select-none font-mono">
+                <div className="text-[10px] tracking-widest text-a-volt uppercase mb-2">TELEMETRY_REF</div>
+                <div className="text-m-cream text-lg font-light">SYSTEM // CH-02</div>
+                <div className="text-xs text-m-sepia mt-2 uppercase tracking-widest leading-loose">
+                  COORD // 46.5760N 8.5290E <br />
+                  STATUS // TRAIN_ENGAGED <br />
+                  COMPASS // HEADING_NNE
                 </div>
               </div>
               
@@ -212,6 +216,11 @@ export default function Section2Departure() {
             {/* Ambient noise applied specifically to this panel to increase texture */}
             <div className="absolute inset-0 bg-[#fbf5e8] pointer-events-none opacity-50" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.15)_100%)] pointer-events-none" />
+
+            {/* Outlined Scrolling text (Lando Norris style) */}
+            <div className="absolute top-[8%] inset-x-0 z-0 opacity-15 overflow-hidden select-none pointer-events-none">
+              <Marquee text="GLACIER EXPRESS SWITZERLAND ALPINE CROSSING" speed={30} colorClass="stroke-black" />
+            </div>
 
             {/* Sky Layer: cream paper, crimson sun */}
             <div className="absolute top-[15%] left-[10%] z-0 flex flex-col">
@@ -321,11 +330,11 @@ export default function Section2Departure() {
           </div>
 
           {/* ================= PANEL 3: Detail Panel ================= */}
-          <div className="w-[100vw] h-full flex items-center justify-center px-12 md:px-24 bg-[#141818] relative">
+          <div className="w-[100vw] h-full flex items-center justify-center px-12 md:px-24 bg-gradient-to-r from-[#faedd4] via-[#141818] to-[#141818] relative">
             
             <div className="max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
               <div className="md:col-span-6 flex flex-col justify-center">
-                <div className="text-[10px] tracking-widest font-mono text-a-teal uppercase mb-4">Destination: Swiss Alps, Switzerland</div>
+                <div className="text-[10px] tracking-widest font-mono text-a-volt uppercase mb-4">Destination: Swiss Alps, Switzerland</div>
                 
                 <h3 className="font-serif text-3xl md:text-4xl font-light tracking-tight text-m-cream mb-6">
                   High-Performance Alpine Engineering
@@ -337,15 +346,15 @@ export default function Section2Departure() {
 
                 <ul className="space-y-3 text-xs md:text-sm font-mono text-m-grey">
                   <li className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-a-teal" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-a-volt animate-pulse" />
                     <span>H.265 / WebM Smart Formats</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-a-teal" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-a-volt" />
                     <span>Aggressive CDN Edge Caching</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-a-teal" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-a-volt" />
                     <span>Visibility-State Animation Pausing</span>
                   </li>
                 </ul>
@@ -356,15 +365,15 @@ export default function Section2Departure() {
                 <div className="relative w-full max-w-xs aspect-square border border-white/5 bg-m-charcoal/50 p-6 rounded shadow-paper-inner flex flex-col justify-between">
                   {/* Layer stack graphic */}
                   <div className="flex flex-col gap-3 w-full">
-                    <div className="h-10 w-full border border-a-teal bg-a-teal/10 rounded flex items-center justify-center text-xs tracking-widest font-mono text-a-teal">
+                    <div className="h-10 w-full border border-a-volt bg-a-volt/10 rounded flex items-center justify-center text-xs tracking-widest font-mono text-a-volt font-bold">
                       GEN ENGINE (DALL-E/MJ)
                     </div>
                     <div className="h-2 w-2 bg-m-cream mx-auto" />
-                    <div className="h-10 w-full border border-a-crimson bg-a-crimson/10 rounded flex items-center justify-center text-xs tracking-widest font-mono text-a-crimson">
+                    <div className="h-10 w-full border border-a-volt bg-a-volt/10 rounded flex items-center justify-center text-xs tracking-widest font-mono text-a-volt font-bold">
                       VECTOR MAPPING (SeeDance)
                     </div>
                     <div className="h-2 w-2 bg-m-cream mx-auto" />
-                    <div className="h-10 w-full border border-a-amber bg-a-amber/10 rounded flex items-center justify-center text-xs tracking-widest font-mono text-a-amber">
+                    <div className="h-10 w-full border border-a-volt bg-a-volt/10 rounded flex items-center justify-center text-xs tracking-widest font-mono text-a-volt font-bold">
                       DELIVERY CDN (Next.js CDN)
                     </div>
                   </div>

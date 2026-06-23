@@ -15,11 +15,15 @@
   --color-adventure-crimson: #9e2a2b;
   --color-adventure-sapphire: #0e3b68;
   --color-adventure-amber: #ffb800;
+  --color-adventure-volt: #d4fc34;
 }
 
 @theme inline {
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
+  
+  /* Custom Animations */
+  --animate-spin-slow: spin 25s linear infinite;
   
   /* Accent Colors */
   --color-m-grey: var(--color-monotony-grey);
@@ -31,6 +35,7 @@
   --color-a-crimson: var(--color-adventure-crimson);
   --color-a-sapphire: var(--color-adventure-sapphire);
   --color-a-amber: var(--color-adventure-amber);
+  --color-a-volt: var(--color-adventure-volt);
   
   /* Shadows representing physical layers of cardboard/paper at different Z-depths */
   --shadow-paper-flat: 0 1px 3px rgba(0, 0, 0, 0.05);

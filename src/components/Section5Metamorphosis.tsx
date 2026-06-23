@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Compass, Send, Map, Heart } from "lucide-react";
 import StaggeredText from "./StaggeredText";
+import Marquee from "./Marquee";
 
 export default function Section5Metamorphosis() {
   const [email, setEmail] = useState("");
@@ -28,8 +29,16 @@ export default function Section5Metamorphosis() {
       <div className="editorial-grid-line left-[20%]" />
       <div className="editorial-grid-line right-[20%]" />
       {/* ================= TOP COLLAGE CANVAS (Swallows Viewport) ================= */}
-      <div className="relative w-full h-[65vh] md:h-[70vh] bg-gradient-to-b from-[#1c0c08] to-[#0a0706] overflow-hidden">
+      <div className="relative w-full h-[65vh] md:h-[70vh] bg-gradient-to-b from-[#1c0c08] to-[#0a0706] overflow-hidden group">
         
+        {/* High-tech corners (Lando Norris style) */}
+        <span className="absolute top-2 left-2 text-[8px] font-mono text-white/20 select-none">+[LN_SYS_05]</span>
+        <span className="absolute top-2 right-2 text-[8px] font-mono text-white/20 select-none">[13.1631S 72.5450W]</span>
+        <span className="absolute bottom-6 left-6 w-2 h-2 border-t border-l border-a-volt/40 pointer-events-none z-30" />
+        <span className="absolute bottom-6 right-6 w-2 h-2 border-t border-r border-a-volt/40 pointer-events-none z-30" />
+        <span className="absolute top-6 left-6 w-2 h-2 border-b border-l border-a-volt/40 pointer-events-none z-30" />
+        <span className="absolute top-6 right-6 w-2 h-2 border-b border-r border-a-volt/40 pointer-events-none z-30" />
+
         {/* Layer 1: Radiant Golden Sunrise Sky */}
         <div className="absolute inset-0 bg-gradient-to-t from-a-amber/30 via-a-crimson/20 to-transparent opacity-65 z-0 pointer-events-none" />
         
@@ -129,7 +138,7 @@ export default function Section5Metamorphosis() {
               {/* Radial gradient face glow, triggers when map is open */}
               <motion.div
                 animate={mapOpen ? { opacity: 0.75, scale: 1.1 } : { opacity: 0, scale: 0.8 }}
-                className="absolute w-24 h-24 rounded-full bg-radial from-a-amber/40 to-transparent blur-[6px] pointer-events-none mix-blend-color-dodge z-50 translate-x-[-15px] translate-y-[-35px]"
+                className="absolute w-24 h-24 rounded-full bg-radial from-a-volt/45 to-transparent blur-[6px] pointer-events-none mix-blend-color-dodge z-50 translate-x-[-15px] translate-y-[-35px]"
               />
 
               {/* Map Asset SVG */}
@@ -138,7 +147,7 @@ export default function Section5Metamorphosis() {
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 className="w-full h-full cursor-pointer relative z-50"
               >
-                <Map className={`w-8 h-8 ${mapOpen ? 'text-a-amber' : 'text-m-sepia'} filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] transition-colors duration-300`} />
+                <Map className={`w-8 h-8 ${mapOpen ? 'text-a-volt' : 'text-m-sepia'} filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] transition-colors duration-300`} />
               </motion.div>
             </div>
           </motion.div>
@@ -148,19 +157,24 @@ export default function Section5Metamorphosis() {
         <div className="absolute inset-0 shadow-[inset_0_-40px_60px_rgba(10,7,6,1)] pointer-events-none z-50" />
       </div>
 
+      {/* Background Marquee behind CTA block */}
+      <div className="absolute bottom-[20%] inset-x-0 z-0 opacity-10 overflow-hidden select-none pointer-events-none">
+        <Marquee text="THE UNMAPPED JOURNEY EXPEDITION PORTFOLIO" speed={25} colorClass="stroke-white/5" />
+      </div>
+
       {/* ================= BOTTOM B2B CTA BLOCK ================= */}
       <div className="relative w-full px-6 md:px-12 lg:px-20 py-16 z-50 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 border-t border-white/5">
         
         {/* Left Side: Call to Action Details */}
         <div className="max-w-md text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-2 mb-4 text-a-amber uppercase tracking-[0.25em] text-xs font-semibold">
+          <div className="flex items-center justify-center md:justify-start gap-2 mb-4 text-a-volt uppercase tracking-[0.25em] text-xs font-semibold">
             <Compass className="w-4 h-4" />
             <span>Showcase Chapter 05 / Machu Picchu, Peru</span>
           </div>
 
           <h3 className="font-serif text-3xl md:text-4xl text-m-cream font-light mb-4 leading-tight">
             Scale New Heights: <br />
-            The <span className="italic text-a-amber">Peru Expedition</span>
+            The <span className="italic text-a-volt">Peru Expedition</span>
           </h3>
 
           <p className="text-m-sepia text-sm font-light leading-relaxed">
@@ -171,7 +185,7 @@ export default function Section5Metamorphosis() {
         {/* Right Side: Form intake */}
         <div className="w-full max-w-sm">
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            <div className="relative flex items-center border border-white/10 bg-[#120f0e] rounded focus-within:border-a-amber/50 transition-colors">
+            <div className="relative flex items-center border border-white/10 bg-[#120f0e] rounded focus-within:border-a-volt/50 transition-colors">
               <input
                 type="email"
                 required
@@ -183,7 +197,7 @@ export default function Section5Metamorphosis() {
               <button
                 type="submit"
                 disabled={submitted}
-                className="px-4 py-3.5 text-a-amber hover:text-white transition-colors disabled:opacity-50"
+                className="px-4 py-3.5 text-a-volt hover:text-white transition-colors disabled:opacity-50"
               >
                 <Send className="w-4 h-4" />
               </button>
@@ -201,7 +215,7 @@ export default function Section5Metamorphosis() {
         <span>© 2026 THE UNMAPPED JOURNEY COLLABORATIVE</span>
         <div className="flex items-center gap-1.5">
           <span>DESIGNED WITH</span>
-          <Heart className="w-3 h-3 text-a-crimson animate-pulse" />
+          <Heart className="w-3 h-3 text-a-volt animate-pulse" />
           <span>AND NEXT.JS</span>
         </div>
         <span>COORD // 13.1631S 72.5450W</span>

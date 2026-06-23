@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Compass, Cpu, Sliders, Layers, BarChart } from "lucide-react";
 import StaggeredText from "./StaggeredText";
+import Marquee from "./Marquee";
 
 export default function Section3Immersion() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -141,11 +142,17 @@ export default function Section3Immersion() {
     >
       <div className="editorial-grid-line left-[20%]" />
       <div className="editorial-grid-line right-[20%]" />
+      
+      {/* Infinite scrolling outlined text background (Lando Norris style) */}
+      <div className="absolute top-[5%] inset-x-0 z-0 opacity-15 overflow-hidden select-none pointer-events-none">
+        <Marquee text="SERENGETI SAFARI WILDERNESS PORTAL KENYA" speed={40} colorClass="stroke-white/5" />
+      </div>
+
       <div className="max-w-7xl mx-auto z-10 relative">
         
         {/* Section Header */}
         <div className="mb-16 max-w-2xl">
-          <div className="flex items-center gap-2 mb-6 text-a-teal uppercase tracking-[0.25em] text-xs font-semibold">
+          <div className="flex items-center gap-2 mb-6 text-a-volt uppercase tracking-[0.25em] text-xs font-semibold">
             <Cpu className="w-4 h-4" />
             <span>Showcase Chapter 03 / Serengeti, Kenya</span>
           </div>
@@ -167,6 +174,13 @@ export default function Section3Immersion() {
           
           {/* LARGE CARD (8-span): The 3D Savanna Valley Collage */}
           <div className="md:col-span-8 group relative aspect-[4/3] bg-[#121110] border border-white/10 rounded-lg overflow-hidden shadow-paper-depth-3">
+            {/* Tech Corners */}
+            <span className="absolute top-2 left-2 text-[8px] font-mono text-white/20 select-none">+[LN_SYS_03]</span>
+            <span className="absolute top-2 right-2 text-[8px] font-mono text-white/20 select-none">[1.9863S 34.8219E]</span>
+            <span className="absolute bottom-6 left-6 w-2 h-2 border-t border-l border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute bottom-6 right-6 w-2 h-2 border-t border-r border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute top-6 left-6 w-2 h-2 border-b border-l border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute top-6 right-6 w-2 h-2 border-b border-r border-a-volt/40 pointer-events-none z-30" />
             
             {/* Parallax Container */}
             <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-[#eae1cc] overflow-hidden">
@@ -328,9 +342,16 @@ export default function Section3Immersion() {
           </div>
 
           {/* CARD 2 (4-span): Tactile controls widget */}
-          <div className="md:col-span-4 bg-m-charcoal border border-white/10 p-6 rounded-lg shadow-paper-depth-2 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-4 text-a-amber">
+          <div className="md:col-span-4 bg-m-charcoal border border-white/10 p-6 rounded-lg shadow-paper-depth-2 flex flex-col justify-between relative">
+            {/* Tech Corners */}
+            <span className="absolute top-2 left-2 text-[8px] font-mono text-white/20 select-none">+[CONTROLS_03]</span>
+            <span className="absolute top-6 left-6 w-2 h-2 border-t border-l border-a-volt/35 pointer-events-none" />
+            <span className="absolute top-6 right-6 w-2 h-2 border-t border-r border-a-volt/35 pointer-events-none" />
+            <span className="absolute bottom-6 left-6 w-2 h-2 border-b border-l border-a-volt/35 pointer-events-none" />
+            <span className="absolute bottom-6 right-6 w-2 h-2 border-b border-r border-a-volt/35 pointer-events-none" />
+            
+            <div className="pt-2">
+              <div className="flex items-center gap-2 mb-4 text-a-volt">
                 <Sliders className="w-5 h-5" />
                 <span className="text-xs font-mono uppercase tracking-wider">Tactile Controls</span>
               </div>
@@ -347,7 +368,7 @@ export default function Section3Immersion() {
               <div className="mb-6">
                 <div className="flex justify-between text-[10px] font-mono mb-2 text-m-grey">
                   <span>Z-DEPTH PARALLAX SCALE</span>
-                  <span className="text-a-amber">{parallaxIntensity}%</span>
+                  <span className="text-a-volt">{parallaxIntensity}%</span>
                 </div>
                 <input 
                   type="range" 
@@ -355,7 +376,7 @@ export default function Section3Immersion() {
                   max="100" 
                   value={parallaxIntensity} 
                   onChange={(e) => setParallaxIntensity(parseInt(e.target.value))}
-                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-a-amber"
+                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-a-volt"
                 />
               </div>
 
@@ -363,7 +384,7 @@ export default function Section3Immersion() {
               <div className="mb-4">
                 <div className="flex justify-between text-[10px] font-mono mb-2 text-m-grey">
                   <span>CARDSTOCK SHADOW STRENGTH</span>
-                  <span className="text-a-amber">x{shadowDepth}</span>
+                  <span className="text-a-volt">x{shadowDepth}</span>
                 </div>
                 <input 
                   type="range" 
@@ -371,7 +392,7 @@ export default function Section3Immersion() {
                   max="10" 
                   value={shadowDepth} 
                   onChange={(e) => setShadowDepth(parseInt(e.target.value))}
-                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-a-amber"
+                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-a-volt"
                 />
               </div>
             </div>
@@ -382,9 +403,16 @@ export default function Section3Immersion() {
           </div>
 
           {/* CARD 3 (4-span): Live B2B dial widget */}
-          <div className="md:col-span-4 bg-[#141212] border border-white/10 p-6 rounded-lg shadow-paper-depth-1 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 mb-4 text-a-teal">
+          <div className="md:col-span-4 bg-[#141212] border border-white/10 p-6 rounded-lg shadow-paper-depth-1 flex flex-col justify-between relative">
+            {/* Tech Corners */}
+            <span className="absolute top-2 left-2 text-[8px] font-mono text-white/20 select-none">+[TELEMETRY_03]</span>
+            <span className="absolute top-6 left-6 w-2 h-2 border-t border-l border-a-volt/35 pointer-events-none" />
+            <span className="absolute top-6 right-6 w-2 h-2 border-t border-r border-a-volt/35 pointer-events-none" />
+            <span className="absolute bottom-6 left-6 w-2 h-2 border-b border-l border-a-volt/35 pointer-events-none" />
+            <span className="absolute bottom-6 right-6 w-2 h-2 border-b border-r border-a-volt/35 pointer-events-none" />
+            
+            <div className="pt-2">
+              <div className="flex items-center gap-2 mb-4 text-a-volt">
                 <Layers className="w-5 h-5" />
                 <span className="text-xs font-mono uppercase tracking-wider">Asset Layer Stack</span>
               </div>
@@ -408,26 +436,33 @@ export default function Section3Immersion() {
                     setDialRotation(rot);
                   }}
                   animate={{ rotate: dialRotation }}
-                  className="w-24 h-24 rounded-full border-2 border-a-teal bg-m-charcoal flex items-center justify-center cursor-grab active:cursor-grabbing relative"
+                  className="w-24 h-24 rounded-full border-2 border-a-volt bg-m-charcoal flex items-center justify-center cursor-grab active:cursor-grabbing relative"
                 >
-                  <div className="w-2 h-2 rounded-full bg-a-teal absolute top-2" />
-                  <Compass className="w-8 h-8 text-a-teal opacity-60" />
+                  <div className="w-2 h-2 rounded-full bg-a-volt absolute top-2" />
+                  <Compass className="w-8 h-8 text-a-volt opacity-60" />
                 </motion.div>
               </div>
             </div>
 
             <div className="text-[9px] font-mono text-m-sepia uppercase flex justify-between">
               <span>DRAG DIAL</span>
-              <span className="text-a-teal">{Math.round(dialRotation)} DEG</span>
+              <span className="text-a-volt">{Math.round(dialRotation)} DEG</span>
             </div>
           </div>
 
           {/* CARD 4 (8-span): Case Study details */}
-          <div className="md:col-span-8 bg-gradient-to-br from-[#101416] to-[#0a0d0e] border border-white/10 p-8 rounded-lg shadow-paper-depth-2 flex flex-col justify-between">
-            <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+          <div className="md:col-span-8 bg-gradient-to-br from-[#101416] to-[#0a0d0e] border border-white/10 p-8 rounded-lg shadow-paper-depth-2 flex flex-col justify-between relative">
+            {/* Tech Corners */}
+            <span className="absolute top-2 left-2 text-[8px] font-mono text-white/20 select-none">+[DATA_STREAM]</span>
+            <span className="absolute top-8 left-8 w-2 h-2 border-t border-l border-a-volt/35 pointer-events-none" />
+            <span className="absolute top-8 right-8 w-2 h-2 border-t border-r border-a-volt/35 pointer-events-none" />
+            <span className="absolute bottom-8 left-8 w-2 h-2 border-b border-l border-a-volt/35 pointer-events-none" />
+            <span className="absolute bottom-8 right-8 w-2 h-2 border-b border-r border-a-volt/35 pointer-events-none" />
+            
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center pt-2">
               
               <div className="sm:col-span-7">
-                <div className="flex items-center gap-2 mb-4 text-a-teal">
+                <div className="flex items-center gap-2 mb-4 text-a-volt">
                   <BarChart className="w-5 h-5" />
                   <span className="text-xs font-mono uppercase tracking-wider">Premium Case Study</span>
                 </div>
@@ -445,8 +480,8 @@ export default function Section3Immersion() {
               <div className="sm:col-span-5 flex justify-center">
                 <div className="border border-white/10 bg-m-charcoal/40 p-4 rounded text-center w-full">
                   <div className="text-[10px] tracking-widest font-mono text-m-grey mb-2 uppercase">LCP LAUNCH SPEED</div>
-                  <div className="text-4xl font-serif text-a-teal font-light mb-2">1.1s</div>
-                  <div className="text-[10px] tracking-wider font-mono text-a-amber uppercase">42% CONVERSION GAIN</div>
+                  <div className="text-4xl font-serif text-a-volt font-light mb-2">1.1s</div>
+                  <div className="text-[10px] tracking-wider font-mono text-a-volt uppercase">42% CONVERSION GAIN</div>
                 </div>
               </div>
               

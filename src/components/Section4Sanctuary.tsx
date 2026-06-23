@@ -128,14 +128,14 @@ export default function Section4Sanctuary() {
         
         {/* Left Side: Sticky Editorial Typography */}
         <div className="lg:col-span-5 flex flex-col justify-start lg:sticky lg:top-24 h-fit">
-          <div className="flex items-center gap-2 mb-6 text-a-amber uppercase tracking-[0.25em] text-xs font-semibold">
-            <Flame className="w-4 h-4 text-a-amber" />
+          <div className="flex items-center gap-2 mb-6 text-a-volt uppercase tracking-[0.25em] text-xs font-semibold">
+            <Flame className="w-4 h-4 text-a-volt" />
             <span>Showcase Chapter 04 / Santorini, Greece</span>
           </div>
 
           <h2 className="font-serif text-4xl md:text-5xl font-light tracking-tight text-m-cream mb-6 leading-tight">
             Sovereign Sanctuary: <br />
-            <span className="italic text-a-amber font-normal">Caldera Eco-Villas</span>
+            <span className="italic text-a-volt font-normal">Caldera Eco-Villas</span>
           </h2>
 
           <StaggeredText
@@ -147,7 +147,7 @@ export default function Section4Sanctuary() {
 
           <div className="space-y-6">
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded bg-a-amber/10 border border-a-amber/20 flex items-center justify-center text-a-amber">
+              <div className="flex-shrink-0 w-10 h-10 rounded bg-a-volt/10 border border-a-volt/20 flex items-center justify-center text-a-volt">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
@@ -159,7 +159,7 @@ export default function Section4Sanctuary() {
             </div>
 
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded bg-a-amber/10 border border-a-amber/20 flex items-center justify-center text-a-amber">
+              <div className="flex-shrink-0 w-10 h-10 rounded bg-a-volt/10 border border-a-volt/20 flex items-center justify-center text-a-volt">
                 <Zap className="w-5 h-5" />
               </div>
               <div>
@@ -181,6 +181,13 @@ export default function Section4Sanctuary() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative w-full aspect-[4/3] max-w-xl border border-white/10 p-4 bg-[#141211] shadow-paper-depth-3 rounded-lg overflow-hidden"
           >
+            {/* Tech Corners */}
+            <span className="absolute top-2 left-2 text-[8px] font-mono text-white/20 select-none">+[LN_SYS_04]</span>
+            <span className="absolute top-2 right-2 text-[8px] font-mono text-white/20 select-none">[36.4166N 25.4324E]</span>
+            <span className="absolute bottom-6 left-6 w-2 h-2 border-t border-l border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute bottom-6 right-6 w-2 h-2 border-t border-r border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute top-6 left-6 w-2 h-2 border-b border-l border-a-volt/40 pointer-events-none z-30" />
+            <span className="absolute top-6 right-6 w-2 h-2 border-b border-r border-a-volt/40 pointer-events-none z-30" />
             {/* Visual Art Canvas */}
             <div className="relative w-full h-full bg-[#0d1620] rounded overflow-hidden">
               
