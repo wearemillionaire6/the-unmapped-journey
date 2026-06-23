@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --background: #121212; /* Start with oppressive dark charcoal background */
+  --foreground: #f4f1ea; /* Soft cream paper tone for readability */
+  
+  /* Monotony Tones */
+  --color-monotony-grey: #c4c4c4;
+  --color-monotony-charcoal: #121212;
+  --color-monotony-sepia: #b5a895;
+  --color-monotony-cream: #f4f1ea;
+  
+  /* Adventure Accents */
+  --color-adventure-teal: #086972;
+  --color-adventure-crimson: #9e2a2b;
+  --color-adventure-sapphire: #0e3b68;
+  --color-adventure-amber: #ffb800;
+}
+
+@theme inline {
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  
+  /* Accent Colors */
+  --color-m-grey: var(--color-monotony-grey);
+  --color-m-charcoal: var(--color-monotony-charcoal);
+  --color-m-sepia: var(--color-monotony-sepia);
+  --color-m-cream: var(--color-monotony-cream);
+  
+  --color-a-teal: var(--color-adventure-teal);
+  --color-a-crimson: var(--color-adventure-crimson);
+  --color-a-sapphire: var(--color-adventure-sapphire);
+  --color-a-amber: var(--color-adventure-amber);
+  
+  /* Shadows representing physical layers of cardboard/paper at different Z-depths */
+  --shadow-paper-flat: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-paper-depth-1: 0 3px 6px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-paper-depth-2: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.15);
+  --shadow-paper-depth-3: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  --shadow-paper-depth-4: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+  --shadow-paper-inner: inset 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Custom selection */
+::selection {
+  background-color: var(--color-adventure-amber);
+  color: var(--color-monotony-charcoal);
+}
+
+/* Custom scrollbar matching raw paper theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1c1c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a;
+}
+
+/* Styled deckle borders and torn edges using SVG path mask-image or borders */
+.paper-edge-bottom {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 98% 97%, 95% 94%, 93% 96%, 90% 93%, 88% 97%, 85% 94%, 82% 96%, 80% 93%, 78% 95%, 75% 93%, 73% 96%, 70% 94%, 68% 97%, 65% 94%, 62% 96%, 60% 93%, 58% 95%, 55% 93%, 52% 96%, 50% 94%, 48% 97%, 45% 94%, 42% 96%, 40% 93%, 38% 95%, 35% 93%, 32% 96%, 30% 94%, 28% 97%, 25% 94%, 22% 96%, 20% 93%, 18% 95%, 15% 93%, 12% 96%, 10% 94%, 8% 97%, 5% 94%, 2% 96%, 0% 93%);
+}
+
+.paper-edge-top {
+  clip-path: polygon(0% 7%, 2% 4%, 5% 6%, 8% 3%, 10% 6%, 12% 4%, 15% 7%, 18% 5%, 20% 7%, 22% 4%, 25% 6%, 28% 3%, 30% 6%, 32% 4%, 35% 7%, 38% 5%, 40% 7%, 42% 4%, 45% 6%, 48% 3%, 50% 6%, 52% 4%, 55% 7%, 58% 5%, 60% 7%, 62% 4%, 65% 6%, 68% 3%, 70% 6%, 72% 4%, 75% 7%, 78% 5%, 80% 7%, 82% 4%, 85% 6%, 88% 3%, 90% 6%, 92% 4%, 95% 7%, 98% 5%, 100% 7%, 100% 100%, 0% 100%);
+}
+
+/* Cardstock shadows and physical paper-cut styling */
+.paper-cut-layer {
+  filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.35));
+}
+
+.paper-cut-layer-shallow {
+  filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.25));
+}
+
+.paper-cut-layer-deep {
+  filter: drop-shadow(0px 16px 24px rgba(0,0,0,0.5));
+}
