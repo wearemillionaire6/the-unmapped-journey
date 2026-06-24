@@ -8,12 +8,12 @@ import { MotionValue } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface ScrollEngineProps {
+interface SapphireEngineProps {
   children: React.ReactNode;
   scrollProgress: MotionValue<number>;
 }
 
-export default function ScrollEngine({ children, scrollProgress }: ScrollEngineProps) {
+export default function SapphireEngine({ children, scrollProgress }: SapphireEngineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollSectionRef = useRef<HTMLDivElement>(null);
 
@@ -64,7 +64,7 @@ export default function ScrollEngine({ children, scrollProgress }: ScrollEngineP
   }, [scrollProgress]);
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-x-hidden bg-m-charcoal">
+    <div ref={containerRef} className="relative w-full overflow-x-hidden bg-[#06101E]">
       <div ref={scrollSectionRef} className="flex h-screen w-max items-center overflow-hidden">
         {children}
       </div>

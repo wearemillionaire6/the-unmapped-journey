@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #121212; /* Start with oppressive dark charcoal background */
-  --foreground: #f4f1ea; /* Soft cream paper tone for readability */
+  --background: #06101E; /* Midnight Sapphire Navy */
+  --foreground: #F4F6F9; /* Off-white crisp text base */
   
-  /* Monotony Tones */
-  --color-monotony-grey: #c4c4c4;
-  --color-monotony-charcoal: #121212;
-  --color-monotony-sepia: #b5a895;
-  --color-monotony-cream: #f4f1ea;
+  /* Monotony/Brand Tones */
+  --color-monotony-grey: #60738A;     /* Muted Steel Slate */
+  --color-monotony-charcoal: #06101E; /* Deep Background */
+  --color-monotony-sepia: #60738A;    /* Steel Accent */
+  --color-monotony-cream: #F4F6F9;    /* Crisp Text */
   
-  /* Adventure Accents */
-  --color-adventure-teal: #086972;
-  --color-adventure-crimson: #9e2a2b;
-  --color-adventure-sapphire: #0e3b68;
-  --color-adventure-amber: #ffb800;
-  --color-adventure-volt: #d4fc34;
+  /* Accents */
+  --color-adventure-teal: #1C2541;    /* Deep Slate Blue */
+  --color-adventure-crimson: #9e2a2b; /* Crimson Warning */
+  --color-adventure-sapphire: #0077FF;/* Brilliant Sapphire Blue */
+  --color-adventure-amber: #48CAE4;   /* Electric Ice Blue */
+  --color-adventure-volt: #d4fc34;    /* Neon Volt highlight */
 }
 
 @theme inline {

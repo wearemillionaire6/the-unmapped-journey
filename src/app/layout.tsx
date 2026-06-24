@@ -16,8 +16,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "The Unmapped Journey | Interactive B2B Agency Showcase",
-  description: "An immersive showcase website leveraging high-fidelity interactive motion vectors and a stylized digital papercut collage aesthetic.",
+  title: "Sapphire Ltd | Alternative Capital Solutions",
+  description: "Alternative Capital Solutions for India's Corporate Engine. High-performance B2B private debt and growth equity structures.",
 };
 
 export default function RootLayout({
