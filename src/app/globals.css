@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0B132B; /* Midnight Sapphire */
-  --foreground: #FFFFFF; /* Pure White */
+  --background: #121212; /* Start with oppressive dark charcoal background */
+  --foreground: #f4f1ea; /* Soft cream paper tone for readability */
   
   /* Monotony Tones */
-  --color-monotony-grey: #a8b2c1;
-  --color-monotony-charcoal: #0B132B;
-  --color-monotony-sepia: #1C2541; /* Deep Slate Blue */
-  --color-monotony-cream: #FFFFFF;
+  --color-monotony-grey: #c4c4c4;
+  --color-monotony-charcoal: #121212;
+  --color-monotony-sepia: #b5a895;
+  --color-monotony-cream: #f4f1ea;
   
-  /* Accents & Theme Tones */
+  /* Adventure Accents */
   --color-adventure-teal: #086972;
-  --color-adventure-crimson: #48CAE4;
-  --color-adventure-sapphire: #0B132B;
-  --color-adventure-amber: #FFFFFF;
-  --color-adventure-volt: #48CAE4; /* Electric Ice Blue */
+  --color-adventure-crimson: #9e2a2b;
+  --color-adventure-sapphire: #0e3b68;
+  --color-adventure-amber: #ffb800;
+  --color-adventure-volt: #d4fc34;
 }
 
 @theme inline {

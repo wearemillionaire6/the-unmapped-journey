@@ -4,10 +4,16 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
+import { MotionValue } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function SapphireEngine({ children }: { children: React.ReactNode }) {
+interface ScrollEngineProps {
+  children: React.ReactNode;
+  scrollProgress: MotionValue<number>;
+}
+
+export default function ScrollEngine({ children, scrollProgress }: ScrollEngineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollSectionRef = useRef<HTMLDivElement>(null);
 
@@ -43,6 +49,10 @@ export default function SapphireEngine({ children }: { children: React.ReactNode
           start: "top top",
           end: () => `+=${amountToScroll}`,
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            // Update the Framer Motion value for high-performance sub-element transforms
+            scrollProgress.set(self.progress);
+          }
         },
       });
     }, containerRef);
@@ -51,10 +61,10 @@ export default function SapphireEngine({ children }: { children: React.ReactNode
       ctx.revert();
       lenis.destroy();
     };
-  }, []);
+  }, [scrollProgress]);
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-x-hidden bg-[#06101E]">
+    <div ref={containerRef} className="relative w-full overflow-x-hidden bg-m-charcoal">
       <div ref={scrollSectionRef} className="flex h-screen w-max items-center overflow-hidden">
         {children}
       </div>
