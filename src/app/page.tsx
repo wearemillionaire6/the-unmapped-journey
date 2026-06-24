@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Compass } from "lucide-react";
 import { motion } from "framer-motion";
-import SapphireScrollEngine from "@/components/SapphireScrollEngine";
+import SapphireEngine from "@/components/SapphireEngine";
 import Panel1Hero from "@/components/Panel1Hero";
 import Panel2Credit from "@/components/Panel2Credit";
 import Panel3Equity from "@/components/Panel3Equity";
@@ -15,23 +15,27 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
   const [telemetryMode, setTelemetryMode] = useState(false);
 
-  // Track active scroll section for the floating header indicators
+  // Track active scroll section for the floating header indicators using bounding client checks
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight <= 0) return;
-      const progress = window.scrollY / totalHeight;
-
-      if (progress < 0.18) {
-        setActiveSection("hero");
-      } else if (progress < 0.38) {
-        setActiveSection("credit");
-      } else if (progress < 0.58) {
-        setActiveSection("equity");
-      } else if (progress < 0.78) {
-        setActiveSection("matrix");
-      } else {
-        setActiveSection("contact");
+      const sections = ["hero", "credit", "equity", "matrix", "contact"];
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (sectionId === "hero" || sectionId === "contact") {
+            if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+              setActiveSection(sectionId);
+              break;
+            }
+          } else {
+            // For horizontal sliding panels, the active one is centered horizontally in the viewport
+            if (rect.left >= -window.innerWidth / 2 && rect.left <= window.innerWidth / 2) {
+              setActiveSection(sectionId);
+              break;
+            }
+          }
+        }
       }
     };
 
@@ -40,11 +44,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#0B132B] text-white selection:bg-[#48CAE4] selection:text-[#0B132B]">
+    <div className="relative min-h-screen bg-[#06101E] text-[#F4F6F9] selection:bg-[#0077FF] selection:text-white">
       {telemetryMode && <TelemetryOverlay />}
 
       {/* Floating Header */}
-      <header className="fixed top-6 inset-x-6 z-50 flex items-center justify-between px-4 sm:px-6 py-4 bg-[#0B132B]/45 border border-white/5 shadow-paper-depth-1 backdrop-blur-md rounded-full max-w-7xl mx-auto select-none">
+      <header className="fixed top-6 inset-x-6 z-50 flex items-center justify-between px-4 sm:px-6 py-4 bg-[#06101E]/45 border border-white/5 shadow-paper-depth-1 backdrop-blur-md rounded-full max-w-7xl mx-auto select-none">
         
         {/* Logo and Icon */}
         <a href="#hero" className="flex items-center gap-2.5 sm:gap-3 text-white hover:text-a-volt transition-colors">
@@ -59,7 +63,7 @@ export default function Home() {
             { id: "hero", label: "01 / HERO" },
             { id: "credit", label: "02 / CREDIT" },
             { id: "equity", label: "03 / EQUITY" },
-            { id: "matrix", label: "04 / MATRIX" },
+            { id: "matrix", label: "04 / RISK" },
             { id: "contact", label: "05 / CONTACT" },
           ].map((item) => (
             <a
@@ -67,13 +71,23 @@ export default function Home() {
               href={`#${item.id}`}
               onClick={(e) => {
                 e.preventDefault();
-                // Smooth scroll based on progress segments
-                const index = ["hero", "credit", "equity", "matrix", "contact"].indexOf(item.id);
-                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-                window.scrollTo({
-                  top: totalHeight * (index * 0.22 + 0.05),
-                  behavior: "smooth"
-                });
+                const el = document.getElementById(item.id);
+                if (el) {
+                  // If it's a horizontal panel, scroll to the parent sticky section
+                  if (item.id === "credit" || item.id === "equity" || item.id === "matrix") {
+                    const sectorParent = document.getElementById("sectors");
+                    if (sectorParent) {
+                      const offsetTop = sectorParent.offsetTop;
+                      const index = ["credit", "equity", "matrix"].indexOf(item.id);
+                      window.scrollTo({
+                        top: offsetTop + index * window.innerWidth + 50,
+                        behavior: "smooth"
+                      });
+                    }
+                  } else {
+                    el.scrollIntoView({ behavior: "smooth" });
+                  }
+                }
               }}
               className={`relative py-1 text-[9px] font-mono tracking-widest transition-colors duration-300 ${
                 activeSection === item.id 
@@ -96,7 +110,7 @@ export default function Home() {
             <button
               onClick={() => setTelemetryMode(false)}
               className={`px-2.5 py-1.5 rounded-full transition-colors relative z-10 ${
-                !telemetryMode ? "text-[#0B132B] font-bold" : "text-slate-400 hover:text-white"
+                !telemetryMode ? "text-[#06101E] font-bold" : "text-slate-400 hover:text-white"
               }`}
             >
               PAPERCUT
@@ -111,7 +125,7 @@ export default function Home() {
             <button
               onClick={() => setTelemetryMode(true)}
               className={`px-2.5 py-1.5 rounded-full transition-colors relative z-10 ${
-                telemetryMode ? "text-[#0B132B] font-bold" : "text-a-volt"
+                telemetryMode ? "text-[#06101E] font-bold" : "text-a-volt"
               }`}
             >
               TELEMETRY
@@ -130,35 +144,41 @@ export default function Home() {
             href="#contact" 
             onClick={(e) => {
               e.preventDefault();
-              const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-              window.scrollTo({ top: totalHeight, behavior: "smooth" });
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="text-[9px] font-mono tracking-widest border border-a-volt/35 px-4 py-2 rounded-full text-a-volt hover:bg-a-volt hover:text-[#0B132B] transition-all hidden sm:inline-block"
+            className="text-[9px] font-mono tracking-widest border border-a-volt/35 px-4 py-2 rounded-full text-a-volt hover:bg-a-volt hover:text-[#06101E] transition-all hidden sm:inline-block"
           >
             CONTACT
           </a>
         </div>
       </header>
 
-      {/* Main horizontal scrolling container */}
+      {/* Hybrid scroll layout wrapper */}
       <main className="w-full flex flex-col">
-        <SapphireScrollEngine>
-          <div id="hero" className="w-[100vw] h-full flex-shrink-0">
-            <Panel1Hero />
-          </div>
-          <div id="credit" className="w-[100vw] h-full flex-shrink-0">
-            <Panel2Credit />
-          </div>
-          <div id="equity" className="w-[100vw] h-full flex-shrink-0">
-            <Panel3Equity />
-          </div>
-          <div id="matrix" className="w-[100vw] h-full flex-shrink-0">
-            <Panel4Matrix />
-          </div>
-          <div id="contact" className="w-[100vw] h-full flex-shrink-0">
-            <Panel5Contact />
-          </div>
-        </SapphireScrollEngine>
+        {/* 1. Hero Section (Vertical scroll) */}
+        <section id="hero" className="w-full">
+          <Panel1Hero />
+        </section>
+
+        {/* 2. Sapphire Engine Section (Pins and slides credit, equity, matrix horizontally) */}
+        <section id="sectors" className="w-full">
+          <SapphireEngine>
+            <div id="credit" className="w-[100vw] h-screen flex-shrink-0">
+              <Panel2Credit />
+            </div>
+            <div id="equity" className="w-[100vw] h-screen flex-shrink-0">
+              <Panel3Equity />
+            </div>
+            <div id="matrix" className="w-[100vw] h-screen flex-shrink-0">
+              <Panel4Matrix />
+            </div>
+          </SapphireEngine>
+        </section>
+
+        {/* 3. Contact Section (Vertical scroll) */}
+        <section id="contact" className="w-full">
+          <Panel5Contact />
+        </section>
       </main>
       
     </div>

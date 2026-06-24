@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Compass, Send, ShieldCheck, Heart } from "lucide-react";
 import StaggeredText from "./StaggeredText";
 import Marquee from "./Marquee";
@@ -22,18 +21,17 @@ export default function Panel5Contact() {
 
   return (
     <div 
-      className="w-[100vw] h-full flex flex-col justify-between bg-[#0B132B] py-16 px-12 md:px-24 relative overflow-hidden select-none"
+      className="w-full min-h-screen flex flex-col justify-between bg-[#06101E] py-24 px-12 md:px-24 relative overflow-hidden select-none"
     >
       <div className="editorial-grid-line left-[20%]" />
       <div className="editorial-grid-line right-[20%]" />
 
       {/* Abstract topological background lines */}
       <div className="absolute inset-0 opacity-10 pointer-events-none z-0">
-        <svg viewBox="0 0 1000 600" className="w-full h-full stroke-a-volt fill-none strokeWidth-1">
+        <svg viewBox="0 0 1000 600" className="w-full h-full stroke-[#0077FF] fill-none strokeWidth-1">
           <path d="M 100,500 Q 250,450 400,480 T 700,430 T 900,460" />
           <path d="M 100,470 Q 280,420 450,440 T 750,390 T 900,420" />
           <path d="M 100,440 Q 300,380 480,400 T 780,350 T 900,380" />
-          <path d="M 100,410 Q 320,340 500,360 T 800,310 T 900,340" />
         </svg>
       </div>
 
@@ -48,7 +46,7 @@ export default function Panel5Contact() {
           <Compass className="w-5 h-5 text-a-volt animate-spin-slow" />
           <span className="font-serif text-sm tracking-[0.2em] font-medium">SAPPHIRE LTD</span>
         </div>
-        <span className="text-[9px] font-mono text-slate-400">STATUS // ALLOCATION_STB</span>
+        <span className="text-[9px] font-mono text-[#60738A]">STATUS // ALLOCATION_STB</span>
       </div>
 
       {/* ================= MID B2B CTA BLOCK ================= */}
@@ -56,7 +54,7 @@ export default function Panel5Contact() {
         
         {/* Left Side: Call to Action Details */}
         <div className="max-w-md text-center md:text-left">
-          <div className="flex items-center justify-center md:justify-start gap-2 mb-4 text-a-volt uppercase tracking-[0.25em] text-xs font-semibold">
+          <div className="flex items-center justify-center md:justify-start gap-2 mb-4 text-[#0077FF] uppercase tracking-[0.25em] text-xs font-semibold">
             <Compass className="w-4 h-4" />
             <span>Connect / Partnership Request</span>
           </div>
@@ -101,7 +99,7 @@ export default function Panel5Contact() {
       </div>
 
       {/* ================= COPYRIGHT / FOOTER DETAILS ================= */}
-      <div className="relative w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-[9px] font-mono text-slate-400 uppercase tracking-widest border-t border-white/5 pt-8 gap-4 z-10 select-none">
+      <div className="relative w-full max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-[9px] font-mono text-[#60738A] uppercase tracking-widest border-t border-white/5 pt-8 gap-4 z-10 select-none">
         <span>© 2026 SAPPHIRE LTD PARTNERSHIP</span>
         <div className="flex items-center gap-1.5">
           <span>BUILT WITH</span>
